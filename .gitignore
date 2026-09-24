@@ -1,0 +1,49 @@
+# Composer-managed dependencies. Keep composer.json and composer.lock tracked.
+/vendor/
+/web/core/
+/web/modules/contrib/
+/web/profiles/contrib/
+/web/themes/contrib/
+/drush/Commands/contrib/
+
+# Drupal site-specific credentials and runtime files.
+/web/sites/*/settings.php
+/web/sites/*/settings.local.php
+/web/sites/*/settings.ddev.php
+/web/sites/*/services.local.yml
+/web/sites/*/files/
+/private/
+/tmp/
+
+# Local credentials. Keep example environment files available to commit.
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.dist
+/auth.json
+
+# Frontend dependencies and test caches.
+node_modules/
+/.phpunit.cache/
+/.phpunit.result.cache
+/coverage/
+
+# Local database exports and logs.
+*.sql
+*.sql.gz
+*.sql.bz2
+*.sql.xz
+*.log
+
+# Editor and operating-system files.
+/.idea/
+/.vscode/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# DDEV maintains its generated-file rules in .ddev/.gitignore.
+# Keep .ddev configuration, config/sync, and custom Drupal code tracked.
