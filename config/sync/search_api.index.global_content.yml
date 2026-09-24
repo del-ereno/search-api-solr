@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_body
     - search_api.server.my_searchapi_solr
   module:
     - node
@@ -59,6 +60,14 @@ name: 'Global content'
 description: ''
 read_only: false
 field_settings:
+  processed:
+    label: 'Body » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'field_body:processed'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_body
   title:
     label: Title
     datasource_id: 'entity:node'
