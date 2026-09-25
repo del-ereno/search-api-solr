@@ -1,0 +1,21 @@
+uuid: f990343a-487e-4440-aeb5-f21577750f3d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_smokerfriendly
+    - node.type.property
+id: node.property.field_smokerfriendly
+field_name: field_smokerfriendly
+entity_type: node
+bundle: property
+label: SmokerFriendly
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

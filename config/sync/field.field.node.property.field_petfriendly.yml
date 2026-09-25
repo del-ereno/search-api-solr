@@ -1,0 +1,21 @@
+uuid: 8001983c-7015-4f27-b471-88bf4e49eb71
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_petfriendly
+    - node.type.property
+id: node.property.field_petfriendly
+field_name: field_petfriendly
+entity_type: node
+bundle: property
+label: PetFriendly
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

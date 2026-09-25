@@ -1,0 +1,119 @@
+uuid: a49ead30-5a33-4952-aa28-1e779cac4210
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.property.field_amenities
+    - field.field.node.property.field_available_from
+    - field.field.node.property.field_bathrooms
+    - field.field.node.property.field_bedrooms
+    - field.field.node.property.field_contact
+    - field.field.node.property.field_description
+    - field.field.node.property.field_petfriendly
+    - field.field.node.property.field_rent
+    - field.field.node.property.field_smokerfriendly
+    - field.field.node.property.field_type
+    - node.type.property
+  module:
+    - datetime
+    - text
+    - user
+id: node.property.default
+targetEntityType: node
+bundle: property
+mode: default
+content:
+  field_amenities:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_available_from:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_bathrooms:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  field_bedrooms:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  field_contact:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_petfriendly:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_rent:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_smokerfriendly:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_type:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 112
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

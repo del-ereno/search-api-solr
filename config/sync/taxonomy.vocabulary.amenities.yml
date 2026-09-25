@@ -1,0 +1,9 @@
+uuid: c86397a8-004b-4a18-b0f5-cbe8bca856df
+langcode: en
+status: true
+dependencies: {  }
+name: Amenities
+vid: amenities
+description: 'Provided household amenities'
+weight: 0
+new_revision: false

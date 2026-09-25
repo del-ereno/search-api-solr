@@ -1,0 +1,23 @@
+uuid: 1480a87f-68f9-4805-bb87-c600a7fe89fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bedrooms
+    - node.type.property
+id: node.property.field_bedrooms
+field_name: field_bedrooms
+entity_type: node
+bundle: property
+label: Bedrooms
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: 100
+  prefix: ''
+  suffix: ''
+field_type: integer

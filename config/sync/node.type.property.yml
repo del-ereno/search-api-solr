@@ -1,0 +1,18 @@
+uuid: 3da765c9-1ce7-4553-90ab-750c5e3f799e
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Property
+type: property
+description: 'Property listing'
+help: null
+new_revision: true
+preview_mode: 2
+display_submitted: true
