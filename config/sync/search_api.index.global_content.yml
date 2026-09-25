@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.search_indexing
     - field.storage.node.field_body
     - search_api.server.my_searchapi_solr
   module:
@@ -64,15 +65,31 @@ field_settings:
     label: 'Body » Processed text'
     datasource_id: 'entity:node'
     property_path: 'field_body:processed'
-    type: string
+    type: text
+    boost: 1.3
     dependencies:
       config:
         - field.storage.node.field_body
+  rendered_item:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
+    type: text
+    configuration:
+      roles:
+        - administrator
+        - anonymous
+        - authenticated
+        - content_editor
+      view_mode:
+        'entity:node':
+          ':default': default
+          page: search_indexing
   title:
     label: Title
     datasource_id: 'entity:node'
     property_path: title
-    type: string
+    type: text
+    boost: 1.2
     dependencies:
       module:
         - node
