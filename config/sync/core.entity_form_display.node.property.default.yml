@@ -3,20 +3,24 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.property.field_address
     - field.field.node.property.field_amenities
     - field.field.node.property.field_available_from
     - field.field.node.property.field_bathrooms
     - field.field.node.property.field_bedrooms
     - field.field.node.property.field_contact
     - field.field.node.property.field_description
+    - field.field.node.property.field_location
     - field.field.node.property.field_parking
     - field.field.node.property.field_petfriendly
     - field.field.node.property.field_rent
     - field.field.node.property.field_smokerfriendly
+    - field.field.node.property.field_suburb
     - field.field.node.property.field_type
     - node.type.property
   module:
     - datetime
+    - geofield
     - path
     - text
 id: node.property.default
@@ -29,6 +33,14 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_address:
+    type: string_textfield
+    weight: 135
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_amenities:
     type: entity_reference_autocomplete
@@ -76,6 +88,13 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_location:
+    type: geofield_latlon
+    weight: 134
+    region: content
+    settings:
+      html5_geolocation: false
+    third_party_settings: {  }
   field_parking:
     type: number
     weight: 133
@@ -103,6 +122,16 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  field_suburb:
+    type: entity_reference_autocomplete
+    weight: 136
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_type:
     type: entity_reference_autocomplete

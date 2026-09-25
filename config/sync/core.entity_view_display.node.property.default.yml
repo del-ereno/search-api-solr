@@ -3,20 +3,24 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.property.field_address
     - field.field.node.property.field_amenities
     - field.field.node.property.field_available_from
     - field.field.node.property.field_bathrooms
     - field.field.node.property.field_bedrooms
     - field.field.node.property.field_contact
     - field.field.node.property.field_description
+    - field.field.node.property.field_location
     - field.field.node.property.field_parking
     - field.field.node.property.field_petfriendly
     - field.field.node.property.field_rent
     - field.field.node.property.field_smokerfriendly
+    - field.field.node.property.field_suburb
     - field.field.node.property.field_type
     - node.type.property
   module:
     - datetime
+    - geofield
     - text
     - user
 id: node.property.default
@@ -24,6 +28,15 @@ targetEntityType: node
 bundle: property
 mode: default
 content:
+  field_address:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 115
+    region: content
   field_amenities:
     type: entity_reference_label
     label: above
@@ -73,6 +86,15 @@ content:
     third_party_settings: {  }
     weight: 101
     region: content
+  field_location:
+    type: geofield_default
+    label: above
+    settings:
+      output_format: wkt
+      output_escape: true
+    third_party_settings: {  }
+    weight: 114
+    region: content
   field_parking:
     type: number_integer
     label: above
@@ -110,6 +132,14 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 107
+    region: content
+  field_suburb:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 116
     region: content
   field_type:
     type: entity_reference_label
