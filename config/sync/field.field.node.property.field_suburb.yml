@@ -1,0 +1,25 @@
+uuid: d125931b-ac1c-46fd-badc-a182f7fa2e1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_suburb
+    - node.type.property
+id: node.property.field_suburb
+field_name: field_suburb
+entity_type: node
+bundle: property
+label: Suburb
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: suburb_selector
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

@@ -1,0 +1,9 @@
+uuid: 3853a026-e09e-4106-8c73-693ac61a0d12
+langcode: en
+status: true
+dependencies: {  }
+name: Region
+vid: region_suburb
+description: null
+weight: 0
+new_revision: false

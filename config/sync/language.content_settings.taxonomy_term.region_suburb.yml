@@ -1,0 +1,11 @@
+uuid: 19ba821e-2309-4736-906d-1cec556e343d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.region_suburb
+id: taxonomy_term.region_suburb
+target_entity_type_id: taxonomy_term
+target_bundle: region_suburb
+default_langcode: site_default
+language_alterable: false
