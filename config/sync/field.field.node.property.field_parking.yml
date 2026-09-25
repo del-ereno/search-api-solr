@@ -1,0 +1,23 @@
+uuid: 720bdd44-ac38-4afd-9a9f-ba45300bd279
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_parking
+    - node.type.property
+id: node.property.field_parking
+field_name: field_parking
+entity_type: node
+bundle: property
+label: Parking
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: 50
+  prefix: ''
+  suffix: ''
+field_type: integer

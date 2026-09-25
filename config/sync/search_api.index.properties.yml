@@ -1,0 +1,210 @@
+uuid: bfebc298-4ec5-427e-b312-07d9ecaed245
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_amenities
+    - field.storage.node.field_available_from
+    - field.storage.node.field_bathrooms
+    - field.storage.node.field_bedrooms
+    - field.storage.node.field_description
+    - field.storage.node.field_parking
+    - field.storage.node.field_petfriendly
+    - field.storage.node.field_rent
+    - field.storage.node.field_smokerfriendly
+    - field.storage.node.field_type
+    - search_api.server.my_searchapi_solr
+  module:
+    - node
+    - search_api_solr
+    - taxonomy
+third_party_settings:
+  search_api_solr:
+    finalize: false
+    commit_before_finalize: false
+    commit_after_finalize: false
+    debug_finalize: false
+    highlighter:
+      maxAnalyzedChars: 51200
+      fragmenter: gap
+      usePhraseHighlighter: true
+      highlightMultiTerm: true
+      preserveMulti: false
+      regex:
+        slop: 0.5
+        pattern: blank
+        maxAnalyzedChars: 10000
+      highlight:
+        mergeContiguous: false
+        requireFieldMatch: false
+        snippets: 3
+        fragsize: 0
+    mlt:
+      mintf: 1
+      mindf: 1
+      maxdf: 0
+      maxdfpct: 0
+      minwl: 0
+      maxwl: 0
+      maxqt: 100
+      maxntp: 2000
+      boost: false
+      interestingTerms: none
+    term_modifiers:
+      slop: 3
+      fuzzy: 1
+      fuzzy_analyzer: true
+    advanced:
+      index_prefix: ''
+      collection: ''
+      timezone: ''
+    multilingual:
+      limit_to_content_language: false
+      include_language_independent: true
+      use_language_undefined_as_fallback_language: false
+      specific_languages:
+        en: '0'
+      use_universal_collation: false
+id: properties
+name: Properties
+description: 'Search index for property listings'
+read_only: false
+field_settings:
+  created:
+    label: 'Authored on'
+    datasource_id: 'entity:node'
+    property_path: created
+    type: date
+    dependencies:
+      module:
+        - node
+  field_available_from:
+    label: 'Available Date'
+    datasource_id: 'entity:node'
+    property_path: field_available_from
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_available_from
+  field_bathrooms:
+    label: Bathrooms
+    datasource_id: 'entity:node'
+    property_path: field_bathrooms
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_bathrooms
+  field_bedrooms:
+    label: Bedrooms
+    datasource_id: 'entity:node'
+    property_path: field_bedrooms
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_bedrooms
+  field_description_1:
+    label: Description
+    datasource_id: 'entity:node'
+    property_path: field_description
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_description
+  field_parking:
+    label: Parking
+    datasource_id: 'entity:node'
+    property_path: field_parking
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_parking
+  field_petfriendly:
+    label: PetFriendly
+    datasource_id: 'entity:node'
+    property_path: field_petfriendly
+    type: boolean
+    dependencies:
+      config:
+        - field.storage.node.field_petfriendly
+  field_rent:
+    label: Rent
+    datasource_id: 'entity:node'
+    property_path: field_rent
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_rent
+  field_smokerfriendly:
+    label: SmokerFriendly
+    datasource_id: 'entity:node'
+    property_path: field_smokerfriendly
+    type: boolean
+    dependencies:
+      config:
+        - field.storage.node.field_smokerfriendly
+  name:
+    label: 'Amenities » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_amenities:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_amenities
+      module:
+        - taxonomy
+  tid:
+    label: 'Type » Taxonomy term » Term ID'
+    datasource_id: 'entity:node'
+    property_path: 'field_type:entity:tid'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_type
+      module:
+        - taxonomy
+  tid_1:
+    label: 'Amenities » Taxonomy term » Term ID'
+    datasource_id: 'entity:node'
+    property_path: 'field_amenities:entity:tid'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_amenities
+      module:
+        - taxonomy
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    dependencies:
+      module:
+        - node
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: false
+      selected:
+        - property
+    languages:
+      default: true
+      selected:
+        - en
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  auto_aggregated_fulltext_field: {  }
+  custom_value: {  }
+  entity_type: {  }
+  language_with_fallback: {  }
+  rendered_item: {  }
+  solr_date_range: {  }
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  cron_limit: 50
+  delete_on_fail: true
+  index_directly: true
+  track_changes_in_references: true
+server: my_searchapi_solr

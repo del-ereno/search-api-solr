@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.property.field_bedrooms
     - field.field.node.property.field_contact
     - field.field.node.property.field_description
+    - field.field.node.property.field_parking
     - field.field.node.property.field_petfriendly
     - field.field.node.property.field_rent
     - field.field.node.property.field_smokerfriendly
@@ -73,6 +74,13 @@ content:
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_parking:
+    type: number
+    weight: 133
+    region: content
+    settings:
       placeholder: ''
     third_party_settings: {  }
   field_petfriendly:
