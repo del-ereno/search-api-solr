@@ -20,7 +20,6 @@
         "drupal/core-project-message": "^11.4",
         "drupal/core-recipe-unpack": "^11.4",
         "drupal/core-recommended": "^11.4",
-        "drupal/devel": "^5.5",
         "drupal/geocoder": "^4.37",
         "drupal/geofield": "^10.3",
         "drupal/search_api": "^1.41",
@@ -106,6 +105,7 @@
         }
     },
     "require-dev": {
+        "drupal/devel": "^5.5",
         "drush/drush": "^13.8"
     }
 }
