@@ -3,6 +3,7 @@ _core:
 module:
   announcements_feed: 0
   automated_cron: 0
+  better_exposed_filters: 0
   big_pipe: 0
   block: 0
   block_content: 0
@@ -14,6 +15,8 @@ module:
   dblog: 0
   dynamic_page_cache: 0
   editor: 0
+  facets: 0
+  facets_exposed_filters: 0
   field: 0
   field_ui: 0
   file: 0
@@ -35,6 +38,8 @@ module:
   path: 0
   path_alias: 0
   search_api: 0
+  search_api_location: 0
+  search_api_location_views: 0
   search_api_solr: 0
   system: 0
   taxonomy: 0
