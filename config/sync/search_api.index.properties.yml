@@ -12,6 +12,7 @@ dependencies:
     - field.storage.node.field_petfriendly
     - field.storage.node.field_rent
     - field.storage.node.field_smokerfriendly
+    - field.storage.node.field_suburb
     - field.storage.node.field_type
     - search_api.server.my_searchapi_solr
   module:
@@ -70,99 +71,7 @@ name: Properties
 description: 'Search index for property listings'
 read_only: false
 field_settings:
-  created:
-    label: 'Authored on'
-    datasource_id: 'entity:node'
-    property_path: created
-    type: date
-    dependencies:
-      module:
-        - node
-  field_available_from:
-    label: 'Available Date'
-    datasource_id: 'entity:node'
-    property_path: field_available_from
-    type: date
-    dependencies:
-      config:
-        - field.storage.node.field_available_from
-  field_bathrooms:
-    label: Bathrooms
-    datasource_id: 'entity:node'
-    property_path: field_bathrooms
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_bathrooms
-  field_bedrooms:
-    label: Bedrooms
-    datasource_id: 'entity:node'
-    property_path: field_bedrooms
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_bedrooms
-  field_description_1:
-    label: Description
-    datasource_id: 'entity:node'
-    property_path: field_description
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_description
-  field_parking:
-    label: Parking
-    datasource_id: 'entity:node'
-    property_path: field_parking
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_parking
-  field_petfriendly:
-    label: PetFriendly
-    datasource_id: 'entity:node'
-    property_path: field_petfriendly
-    type: boolean
-    dependencies:
-      config:
-        - field.storage.node.field_petfriendly
-  field_rent:
-    label: Rent
-    datasource_id: 'entity:node'
-    property_path: field_rent
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_rent
-  field_smokerfriendly:
-    label: SmokerFriendly
-    datasource_id: 'entity:node'
-    property_path: field_smokerfriendly
-    type: boolean
-    dependencies:
-      config:
-        - field.storage.node.field_smokerfriendly
-  name:
-    label: 'Amenities » Taxonomy term » Name'
-    datasource_id: 'entity:node'
-    property_path: 'field_amenities:entity:name'
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.field_amenities
-      module:
-        - taxonomy
-  tid:
-    label: 'Type » Taxonomy term » Term ID'
-    datasource_id: 'entity:node'
-    property_path: 'field_type:entity:tid'
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_type
-      module:
-        - taxonomy
-  tid_1:
+  amenity_id:
     label: 'Amenities » Taxonomy term » Term ID'
     datasource_id: 'entity:node'
     property_path: 'field_amenities:entity:tid'
@@ -172,7 +81,65 @@ field_settings:
         - field.storage.node.field_amenities
       module:
         - taxonomy
-  title:
+  amenity_name:
+    label: 'Amenities » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_amenities:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_amenities
+      module:
+        - taxonomy
+  available_by:
+    label: 'Available Date'
+    datasource_id: 'entity:node'
+    property_path: field_available_from
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_available_from
+  bathroom_count:
+    label: Bathrooms
+    datasource_id: 'entity:node'
+    property_path: field_bathrooms
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_bathrooms
+  bedroom_count:
+    label: Bedrooms
+    datasource_id: 'entity:node'
+    property_path: field_bedrooms
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_bedrooms
+  created_at:
+    label: 'Authored on'
+    datasource_id: 'entity:node'
+    property_path: created
+    type: date
+    dependencies:
+      module:
+        - node
+  field_smokerfriendly:
+    label: SmokerFriendly
+    datasource_id: 'entity:node'
+    property_path: field_smokerfriendly
+    type: boolean
+    dependencies:
+      config:
+        - field.storage.node.field_smokerfriendly
+  listing_desc:
+    label: Description
+    datasource_id: 'entity:node'
+    property_path: field_description
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_description
+  listing_name:
     label: Title
     datasource_id: 'entity:node'
     property_path: title
@@ -180,6 +147,80 @@ field_settings:
     dependencies:
       module:
         - node
+  parking_count:
+    label: Parking
+    datasource_id: 'entity:node'
+    property_path: field_parking
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_parking
+  petfriendly:
+    label: PetFriendly
+    datasource_id: 'entity:node'
+    property_path: field_petfriendly
+    type: boolean
+    dependencies:
+      config:
+        - field.storage.node.field_petfriendly
+  region_id:
+    label: 'Suburb » Taxonomy term » Term Parents » Taxonomy term » Term ID'
+    datasource_id: 'entity:node'
+    property_path: 'field_suburb:entity:parent:entity:tid'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_suburb
+      module:
+        - taxonomy
+  region_name:
+    label: 'Suburb » Taxonomy term » Term Parents » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_suburb:entity:parent:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_suburb
+      module:
+        - taxonomy
+  rent_amnt:
+    label: Rent
+    datasource_id: 'entity:node'
+    property_path: field_rent
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_rent
+  suburb_id:
+    label: 'Suburb » Taxonomy term » Term ID'
+    datasource_id: 'entity:node'
+    property_path: 'field_suburb:entity:tid'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_suburb
+      module:
+        - taxonomy
+  suburb_name:
+    label: 'Suburb » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_suburb:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_suburb
+      module:
+        - taxonomy
+  type_id:
+    label: 'Type » Taxonomy term » Term ID'
+    datasource_id: 'entity:node'
+    property_path: 'field_type:entity:tid'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_type
+      module:
+        - taxonomy
 datasource_settings:
   'entity:node':
     bundles:
@@ -187,7 +228,7 @@ datasource_settings:
       selected:
         - property
     languages:
-      default: true
+      default: false
       selected:
         - en
 processor_settings:
