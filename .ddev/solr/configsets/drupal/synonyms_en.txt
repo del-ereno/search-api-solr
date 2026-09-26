@@ -17475,3 +17475,6 @@ zoogleae, zoogloeae
 zoogleal, zoogloeal
 zoogleas, zoogloeas
 zygenid, zygaenid
+flat, unit, apartment
+cbd, city centre, city center
+garage, carpark, car park => parking

@@ -87,6 +87,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'field_amenities:entity:name'
     type: text
+    boost: 2.0
     dependencies:
       config:
         - field.storage.node.field_amenities
@@ -128,7 +129,8 @@ field_settings:
     label: Address
     datasource_id: 'entity:node'
     property_path: field_address
-    type: string
+    type: text
+    boost: 2.0
     dependencies:
       config:
         - field.storage.node.field_address
@@ -145,6 +147,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: field_description
     type: text
+    boost: 2.0
     dependencies:
       config:
         - field.storage.node.field_description
@@ -153,6 +156,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: text
+    boost: 3.0
     dependencies:
       module:
         - node
@@ -197,6 +201,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'field_suburb:entity:parent:entity:name'
     type: text
+    boost: 3.0
     dependencies:
       config:
         - field.storage.node.field_suburb
@@ -233,6 +238,18 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'field_suburb:entity:name'
     type: text
+    boost: 5.0
+    dependencies:
+      config:
+        - field.storage.node.field_suburb
+      module:
+        - taxonomy
+  suburb_phonetic:
+    label: 'Suburb » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_suburb:entity:name'
+    type: 'solr_text_custom:phonetic'
+    boost: 5.0
     dependencies:
       config:
         - field.storage.node.field_suburb

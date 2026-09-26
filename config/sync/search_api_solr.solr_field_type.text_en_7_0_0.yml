@@ -287,8 +287,7 @@ text_files:
     was
     will
     with
-  protwords: |
-
+  protwords: ''
   accents: |
     # À => A
     "\u00C0" => "A"
@@ -475,7 +474,7 @@ text_files:
     "\u014D" => "o"
     # ū => u
     "\u016B" => "u"
-  synonyms: |
+  synonyms: |-
     drupal, durpal
     abettor's, abetter's
     abettor, abetter
@@ -17953,3 +17952,6 @@ text_files:
     zoogleal, zoogloeal
     zoogleas, zoogloeas
     zygenid, zygaenid
+    flat, unit, apartment
+    cbd, city centre, city center
+    garage, carpark, car park => parking
