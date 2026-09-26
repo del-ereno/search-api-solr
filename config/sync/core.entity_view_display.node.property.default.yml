@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.property.field_bedrooms
     - field.field.node.property.field_contact
     - field.field.node.property.field_description
+    - field.field.node.property.field_images
     - field.field.node.property.field_location
     - field.field.node.property.field_parking
     - field.field.node.property.field_petfriendly
@@ -21,6 +22,7 @@ dependencies:
   module:
     - datetime
     - geofield
+    - image
     - text
     - user
 id: node.property.default
@@ -35,7 +37,7 @@ content:
       link_to_entity: false
       link_rel: canonical
     third_party_settings: {  }
-    weight: 115
+    weight: 12
     region: content
   field_amenities:
     type: entity_reference_label
@@ -43,7 +45,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 109
+    weight: 6
     region: content
   field_available_from:
     type: datetime_default
@@ -52,7 +54,7 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 104
+    weight: 3
     region: content
   field_bathrooms:
     type: number_integer
@@ -61,7 +63,7 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 111
+    weight: 8
     region: content
   field_bedrooms:
     type: number_integer
@@ -70,21 +72,25 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 110
-    region: content
-  field_contact:
-    type: basic_string
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 108
+    weight: 7
     region: content
   field_description:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 1
+    region: content
+  field_images:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 14
     region: content
   field_location:
     type: geofield_default
@@ -93,7 +99,7 @@ content:
       output_format: wkt
       output_escape: true
     third_party_settings: {  }
-    weight: 114
+    weight: 11
     region: content
   field_parking:
     type: number_integer
@@ -102,7 +108,7 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 113
+    weight: 10
     region: content
   field_petfriendly:
     type: boolean
@@ -112,7 +118,7 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 106
+    weight: 4
     region: content
   field_rent:
     type: number_integer
@@ -121,7 +127,7 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 102
+    weight: 2
     region: content
   field_smokerfriendly:
     type: boolean
@@ -131,7 +137,7 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 107
+    weight: 5
     region: content
   field_suburb:
     type: entity_reference_label
@@ -139,7 +145,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 116
+    weight: 13
     region: content
   field_type:
     type: entity_reference_label
@@ -147,13 +153,14 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 112
+    weight: 9
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
+  field_contact: true
   langcode: true
   search_api_excerpt: true

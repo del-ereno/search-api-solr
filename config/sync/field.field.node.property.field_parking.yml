@@ -17,7 +17,7 @@ default_value: {  }
 default_value_callback: ''
 settings:
   min: 0
-  max: 50
+  max: 10
   prefix: ''
   suffix: ''
 field_type: integer
