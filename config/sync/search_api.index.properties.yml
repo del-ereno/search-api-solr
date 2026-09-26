@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_address
     - field.storage.node.field_amenities
     - field.storage.node.field_available_from
     - field.storage.node.field_bathrooms
@@ -123,14 +124,22 @@ field_settings:
     dependencies:
       module:
         - node
-  field_smokerfriendly:
-    label: SmokerFriendly
+  field_address:
+    label: Address
     datasource_id: 'entity:node'
-    property_path: field_smokerfriendly
-    type: boolean
+    property_path: field_address
+    type: string
     dependencies:
       config:
-        - field.storage.node.field_smokerfriendly
+        - field.storage.node.field_address
+  field_suburb:
+    label: Suburb
+    datasource_id: 'entity:node'
+    property_path: field_suburb
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_suburb
   listing_desc:
     label: Description
     datasource_id: 'entity:node'
@@ -147,6 +156,16 @@ field_settings:
     dependencies:
       module:
         - node
+  name:
+    label: 'Type » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_type:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_type
+      module:
+        - taxonomy
   parking_count:
     label: Parking
     datasource_id: 'entity:node'
@@ -155,7 +174,7 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_parking
-  petfriendly:
+  pet_friendly:
     label: PetFriendly
     datasource_id: 'entity:node'
     property_path: field_petfriendly
@@ -183,7 +202,7 @@ field_settings:
         - field.storage.node.field_suburb
       module:
         - taxonomy
-  rent_amnt:
+  rent:
     label: Rent
     datasource_id: 'entity:node'
     property_path: field_rent
@@ -191,6 +210,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_rent
+  smoker_friendly:
+    label: SmokerFriendly
+    datasource_id: 'entity:node'
+    property_path: field_smokerfriendly
+    type: boolean
+    dependencies:
+      config:
+        - field.storage.node.field_smokerfriendly
   suburb_id:
     label: 'Suburb » Taxonomy term » Term ID'
     datasource_id: 'entity:node'
@@ -236,10 +263,39 @@ processor_settings:
   aggregated_field: {  }
   auto_aggregated_fulltext_field: {  }
   custom_value: {  }
+  entity_status: {  }
   entity_type: {  }
+  hierarchy:
+    weights:
+      preprocess_index: -45
+    fields:
+      field_suburb: taxonomy_term-parent
+  html_filter:
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
+    all_fields: false
+    fields:
+      - amenity_name
+      - listing_desc
+      - listing_name
+      - region_name
+      - suburb_name
+    title: true
+    alt: true
+    tags:
+      b: 2.0
+      em: 1.5
+      h1: 5.0
+      h2: 3.0
+      h3: 2.0
+      strong: 2.0
+      u: 1.5
   language_with_fallback: {  }
   rendered_item: {  }
-  solr_date_range: {  }
+  solr_date_range:
+    weights:
+      preprocess_index: 0
 tracker_settings:
   default:
     indexing_order: fifo
