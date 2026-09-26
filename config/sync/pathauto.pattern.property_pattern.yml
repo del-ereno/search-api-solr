@@ -1,0 +1,23 @@
+uuid: f1fd7cc2-070c-48a2-9fc0-dae37d91d611
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.property
+  module:
+    - node
+id: property_pattern
+label: 'Property Pattern'
+type: 'canonical_entities:node'
+pattern: '/properties/[node:field_suburb:entity:parent:name]/[node:field_suburb:entity:name]/[node:title]'
+selection_criteria:
+  ec034e20-58ad-4a74-a2a9-bb0f1b7dfc90:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      property: property
+selection_logic: and
+weight: -5
+relationships: {  }
