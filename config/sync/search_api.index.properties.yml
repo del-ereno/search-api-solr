@@ -9,6 +9,7 @@ dependencies:
     - field.storage.node.field_bathrooms
     - field.storage.node.field_bedrooms
     - field.storage.node.field_description
+    - field.storage.node.field_location
     - field.storage.node.field_parking
     - field.storage.node.field_petfriendly
     - field.storage.node.field_rent
@@ -18,6 +19,7 @@ dependencies:
     - search_api.server.my_searchapi_solr
   module:
     - node
+    - search_api_location
     - search_api_solr
     - taxonomy
 third_party_settings:
@@ -72,6 +74,15 @@ name: Properties
 description: 'Search index for property listings'
 read_only: false
 field_settings:
+  address:
+    label: Address
+    datasource_id: 'entity:node'
+    property_path: field_address
+    type: text
+    boost: 2.0
+    dependencies:
+      config:
+        - field.storage.node.field_address
   amenity_id:
     label: 'Amenities » Taxonomy term » Term ID'
     datasource_id: 'entity:node'
@@ -125,15 +136,6 @@ field_settings:
     dependencies:
       module:
         - node
-  field_address:
-    label: Address
-    datasource_id: 'entity:node'
-    property_path: field_address
-    type: text
-    boost: 2.0
-    dependencies:
-      config:
-        - field.storage.node.field_address
   field_suburb:
     label: Suburb
     datasource_id: 'entity:node'
@@ -142,6 +144,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_suburb
+  latlon:
+    label: 'Location » LatLong Pair'
+    datasource_id: 'entity:node'
+    property_path: 'field_location:latlon'
+    type: location
+    dependencies:
+      config:
+        - field.storage.node.field_location
   listing_desc:
     label: Description
     datasource_id: 'entity:node'
@@ -160,16 +170,6 @@ field_settings:
     dependencies:
       module:
         - node
-  name:
-    label: 'Type » Taxonomy term » Name'
-    datasource_id: 'entity:node'
-    property_path: 'field_type:entity:name'
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_type
-      module:
-        - taxonomy
   parking_count:
     label: Parking
     datasource_id: 'entity:node'
@@ -186,16 +186,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_petfriendly
-  region_id:
-    label: 'Suburb » Taxonomy term » Term Parents » Taxonomy term » Term ID'
-    datasource_id: 'entity:node'
-    property_path: 'field_suburb:entity:parent:entity:tid'
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_suburb
-      module:
-        - taxonomy
   region_name:
     label: 'Suburb » Taxonomy term » Term Parents » Taxonomy term » Name'
     datasource_id: 'entity:node'
@@ -223,16 +213,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_smokerfriendly
-  suburb_id:
-    label: 'Suburb » Taxonomy term » Term ID'
-    datasource_id: 'entity:node'
-    property_path: 'field_suburb:entity:tid'
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_suburb
-      module:
-        - taxonomy
   suburb_name:
     label: 'Suburb » Taxonomy term » Name'
     datasource_id: 'entity:node'
@@ -249,7 +229,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'field_suburb:entity:name'
     type: 'solr_text_custom:phonetic'
-    boost: 5.0
+    boost: 2.0
     dependencies:
       config:
         - field.storage.node.field_suburb
@@ -260,6 +240,16 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'field_type:entity:tid'
     type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_type
+      module:
+        - taxonomy
+  type_name:
+    label: 'Type » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_type:entity:name'
+    type: string
     dependencies:
       config:
         - field.storage.node.field_type
@@ -293,11 +283,7 @@ processor_settings:
       preprocess_query: -15
     all_fields: false
     fields:
-      - amenity_name
       - listing_desc
-      - listing_name
-      - region_name
-      - suburb_name
     title: true
     alt: true
     tags:
@@ -310,6 +296,17 @@ processor_settings:
       u: 1.5
   language_with_fallback: {  }
   rendered_item: {  }
+  solr_boost_more_recent:
+    weights:
+      preprocess_query: 0
+    boosts:
+      created_at:
+        boost: 1.0
+        resolution: NOW/DAY
+        m: '3.16e-11'
+        a: 0.1
+        b: 0.05
+        support_future_dates: false
   solr_date_range:
     weights:
       preprocess_index: 0
