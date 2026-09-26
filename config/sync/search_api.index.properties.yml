@@ -84,15 +84,13 @@ field_settings:
       config:
         - field.storage.node.field_address
   amenity_id:
-    label: 'Amenities » Taxonomy term » Term ID'
+    label: Amenities
     datasource_id: 'entity:node'
-    property_path: 'field_amenities:entity:tid'
+    property_path: field_amenities
     type: integer
     dependencies:
       config:
         - field.storage.node.field_amenities
-      module:
-        - taxonomy
   amenity_name:
     label: 'Amenities » Taxonomy term » Name'
     datasource_id: 'entity:node'
@@ -236,15 +234,13 @@ field_settings:
       module:
         - taxonomy
   type_id:
-    label: 'Type » Taxonomy term » Term ID'
+    label: Type
     datasource_id: 'entity:node'
-    property_path: 'field_type:entity:tid'
+    property_path: field_type
     type: integer
     dependencies:
       config:
         - field.storage.node.field_type
-      module:
-        - taxonomy
   type_name:
     label: 'Type » Taxonomy term » Name'
     datasource_id: 'entity:node'
